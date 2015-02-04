@@ -1,4 +1,4 @@
-__author__ BB
+__author__BB
 
 ''' 
 The Game of Life: 
@@ -11,13 +11,17 @@ The Game of life
 
 import random
 
-print ('The Game of Life
-	We'll start at the summer
-	before high school....')
+print ('The Game of Life:')
+print ("We'll start at the summer before high school....")
 
 name = raw_input('what\s you name:\n' )
-gender = raw_input('boy or girl? (b/g)\n' )
- 
+def gender():
+    raw_input('boy or girl? (b/g)\n' ).lower()
+    if "b" in gender:
+	gender = False
+    if "g" in gnd:
+	gender = True
+
 print job_prompt
 
 car = False
@@ -37,14 +41,14 @@ class Character():
 	self.orientation = True
 	self.age = 14
 
-	graduate  = 18
-	year_pass = 1
-	while age <= 4:
-	    print "Welcome to the next year of high school"
-	    age += year_pass
-		if age == graduate:
-		    print 'congradulatons, you are a high school graduate!'
-	                break
+#	graduate  = 18
+#	year_pass = 1
+#	while age <= 4:
+#	    print ("Welcome to the next year of high school")
+#	    age += year_pass
+#		if age == graduate
+#		    print ('congradulatons, you are a high school graduate!')
+#	                break
 
     def getName(self):
 	return self.name
