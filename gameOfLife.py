@@ -1,3 +1,5 @@
+__author__ BB
+
 ''' 
 The Game of Life: 
 Hey, we all make choices and, well,
@@ -6,6 +8,9 @@ life is like baseball and baseball is a game,
 so here it is: 
 The Game of life
 '''
+
+import random
+
 print ('The Game of Life
 	We'll start at the summer
 	before high school....')
@@ -104,9 +109,12 @@ class Work():
         return self.hobbies
 
     def __str__(self):
-	return "%s, you need a job! \n" %self.name
-	in_out = raw_input("would you like to work inside or outside? \ni/o>")
-	    if in_out.lower == 'i'
-		pass
-	    if in_out.lower == 'o'
-		pass
+        while True:
+            return "%s, you need a job! \n" %self.name
+	    in_out = raw_input("would you like to work inside or outside? \ni/o>").lower()
+	        if 'i' in in_out
+		    work.outsideWork()
+	        if 'o' in in_out
+		    work.insideWork()
+		else:
+		    pass
