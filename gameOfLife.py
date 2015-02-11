@@ -58,6 +58,7 @@ def main():
 	if status >= 80
   	    print "you're friends want you to run for student government" 
 	    gov = raw_input("y or n?> ")
+    friends = ['geeks' , 'jocks' , 'emo kids' , 'artsy' , 'shoppers', 'over-acheiver','stoners']
     car = False
     hs = ["Freshman","Sophmore","Junior","Senior"]
     friend = 1
