@@ -14,6 +14,17 @@ The Game of life
 print ('The Game of Life:')
 print ("We'll start at the summer before high school....")
 
+def summerJob:
+    print ('Would you like a job?')
+    jobResponse = raw_input('y/n> ').lower()
+    if 'y' in jobResponse:
+        print ('good deal')
+	money += 20
+    elif 'n' in jobResponse: 
+        print ("okay, well idle hands are the devil's playground")
+    else:
+	break	
+
 I = Intro()
 
 class Intro():
