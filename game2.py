@@ -14,7 +14,7 @@ The Game of life
 print ('The Game of Life:')
 print ("We'll start at the summer before high school....")
 
-def summerJob:
+def summerJob():
     print ('Would you like a job?')
     jobResponse = raw_input('y/n> ').lower()
     if 'y' in jobResponse:
@@ -48,26 +48,6 @@ class Intro():
 	return "Hi %s" % self.name
 
 
-def main():
-    health = 80
-    intel = 50
-	if intel <= 20
-	HighSchool(nextYear("flunked"))   
-    charisma = 30
-    status = 30
-	if status >= 80
-  	    print "you're friends want you to run for student government" 
-	    gov = raw_input("y or n?> ")
-    friends = ['geeks' , 'jocks' , 'emo kids' , 'artsy' , 'shoppers', 'over-acheiver','stoners']
-    car = False
-    hs = ["Freshman","Sophmore","Junior","Senior"]
-    friend = 1
-        if friend >= 10
-	    print ("you're getting popular")
-	    status += 5
-    lover = 0
-main()
-
 # hs[0] = "Freshman"
 
 class HighSchool():
@@ -75,10 +55,10 @@ class HighSchool():
 	self.year = year
     def nextYear(self):
 	if 'pass' in passed:
-            return self.year += year
+            self.year += year
 	elif 'flunked' in passed:
 	    print "You have to repeat %s.  Study harder!" % (self.year)
-	else 
+	else: 
 	    print "Congrats, you're a H.S. graduate. Live long & prosper"
 	    return HSG
 
@@ -140,10 +120,10 @@ wrk_main()
     
 class Work():
     def __init__(self):
-    self.job = job
-    self.workoutside = workoutside()
-    self.workinside = workinside()
-    self.timeWast = timeWaste
+        self.job = job
+        self.workoutside = workoutside()
+        self.workinside = workinside()
+        self.timeWast = timeWaste
     
     def add_hobby(self, *hobbies): ##need __init?  can def seperately?
         for hobby in hobbies:
@@ -152,23 +132,25 @@ class Work():
 
     def __str__(self):
         while True:
-            return "%s, you need a job! \n" %self.name
+            print "%s, you need a job! \n" %self.name
 	    in_out = raw_input("would you like to work inside or outside? \ni/o>").lower()
-	        if 'o' in in_out
-		    print ("pick one: %s") %s (workoutside[0,1])
-		    choice = raw_input('> ').lower()
-			if 'yard' in choice:
-			    health += 3, money += 5
-			if 'pap' in choice:
-	        if 'i' in in_out
+	    if 'o' in in_out:
+		print ("pick one: %s") %s (workoutside[0,1])
+		choice = raw_input('> ').lower()
+		if 'yard' in choice:
+		    health += 3
+		    money += 5
+		if 'pap' in choice:
+	            pass
+		if 'i' in in_out:
 		    print ("pick one: %s") %s (workinside[0,1,2])
 		    choice = raw_input('> ').lower()
-			if 'gro' in choice:
-			   money += 3
-			if 'foo' in choice:
-			   money += 5
-			if 're' in choice:
-			   money += 3
+		    if 'gro' in choice:
+		        money += 3
+		    if 'foo' in choice:
+			money += 5
+		    if 're' in choice:
+			money += 3
 		else:
 		    pass
 
@@ -199,7 +181,38 @@ def storyOne():
     	    if pick == 5:
 		Work()
     	    if pick == 6:
+		pass
     	    if pick == 7:
+		pass
     	    if pick == 8:
-    	    if pick == 9:
-   
+    	        pass
+	    if pick == 9:
+   		pass
+
+def main():
+    health = 80
+    intel = 50
+#       if want_to_study == no
+#           study_resut(intel) -= 10
+#       if want_to_study == yes
+#           study_result(intel) += 10
+#       if intel <= 20
+#       HighSchool(nextYear("flunked"))   
+    self_esteem = 60
+    charisma = 30
+    status = 30
+#       if status >= 80
+#           print "you're friends want you to run for student government" 
+#           gov = raw_input("y or n?> ")
+    friends = ['geeks' , 'jocks' , 'emo kids' , 'artsy' , 'shoppers', 'over-ach$
+    car = False
+    hs = ["Freshman","Sophmore","Junior","Senior"]
+    friend = 1
+#       if friend >= 10
+#           print ("you're getting popular")
+#           status += 5
+    lover = 0
+main()
+
+# hs[0] = "Freshman"
+
