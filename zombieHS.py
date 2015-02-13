@@ -1,14 +1,14 @@
 imort random
 
 class Character:
-    def __init))(self):
+    def __init__(self):
         self.name = ""
 	self.health = health
     def inflict(self, zombie):
 	inflict = min(max(randint(0, self.health)- randomint(0, zombie.health), 0), zombie.health)
 	zombie.health -= damage
 	if inflict == 0:
-	    print"like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
+	    print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
 	else
 	    print("%s inflicts debilitating damage on %s!!" %(self.name, zombie.name) 
 	return zombie.health <= 0
@@ -58,62 +58,63 @@ class Player(Character):
 	    self.enemy_attacks()
 ##### clean up past here
         else:
-            print "%s explores a twisty passage." % self.name
+            print "%s runs into the book stacks in the library" % self.name
             if randint(0, 1):
-            self.enemy = Enemy(self)
-            print "%s encounters %s!" % (self.name, self.enemy.name)
+            self.zombie = Zombie(self)
+            print "%s encounters %s!" % (self.name, self.zombie.name)
             self.state = 'fight'
          else:
             if randint(0, 1): self.tired()
-##### fix indents
-  def flee(self):
-    if self.state != 'fight': print "%s runs in circles for a while." % self.name; self.tired()
-    else:
-      if randint(1, self.health + 5) > randint(1, self.enemy.health):
-        print "%s flees from %s." % (self.name, self.enemy.name)
-        self.enemy = None
-        self.state = 'normal'
-      else: print "%s couldn't escape from %s!" % (self.name, self.enemy.name); self.enemy_attacks()
-  def attack(self):
-    if self.state != 'fight': print "%s swats the air, without notable results." % self.name; self.tired()
-    else:
-      if self.do_damage(self.enemy):
-        print "%s executes %s!" % (self.name, self.enemy.name)
-        self.enemy = None
-        self.state = 'normal'
+    def flee(self):
+        if self.state != 'fight': print "%s runs down a corridor" % self.name; self.tired()
+        else:
+            if randint(1, self.health + 5) > randint(1, self.zombie.health):
+            print "%s flees from %s." % (self.name, self.zombie.name)
+            self.zombie = None
+            self.state = 'normal'
+        else: print "%s couldn't escape from %s!" % (self.name, self.zombie.name); self.zombie_attacks()
+    def attack(self):
+        if self.state != 'fight': print "%s flails in the air like a twit." % self.name; self.tired()
+        else:
+            if self.do_damage(self.zombie):
+            print ("%s decapitates %s!") % (self.name, self.zombie.name)
+            self.zombie = None
+            self.state = 'normal'
         if randint(0, self.health) < 10:
-          self.health = self.health + 1
-          self.health_max = self.health_max + 1
-          print "%s feels stronger!" % self.name
-      else: self.enemy_attacks()
-  def enemy_attacks(self):
-    if self.enemy.do_damage(self): print "%s was slaughtered by %s!!!\nR.I.P." %(self.name, self.enemy.name)
+            self.health +=  1
+            self.health_max += 1
+            print "%s is rejuvinated" % self.name
+        else: self.zombie_attacks()
+    def zombie_attacks(self):
+        if self.zombie.do_damage(self): print "%s's brains were devoured  by %s!!!\nyou are undead and crave BRAINS!!/nunless you're a veggetarian then seek GRAINS!!" %(self.name, self.zombie.name)
  
 Commands = {
-  'quit': Player.quit,
-  'help': Player.help,
-  'status': Player.status,
-  'rest': Player.rest,
-  'explore': Player.explore,
-  'flee': Player.flee,
-  'attack': Player.attack,
-  }
+    'quit': Player.quit,
+    'help': Player.help,
+    'status': Player.status,
+    'rest': Player.rest,
+    'explore': Player.explore,
+    'flee': Player.flee,
+    'attack': Player.attack,
+     }
  
 p = Player()
 p.name = raw_input("What is your character's name? ")
 print "(type help to get a list of actions)\n"
-print "%s enters a dark cave, searching for adventure." % p.name
+print """When %s leaves homeroom, they 
+a strange stench in the air
+	maybe we are disecting a pig in biology today...""" % p.name
  
 while(p.health > 0):
-  line = raw_input("> ")
-  args = line.split()
-  if len(args) > 0:
-    commandFound = False
+    line = raw_input("> ")
+    args = line.split()
+    if len(args) > 0:
+        commandFound = False
     for c in Commands.keys():
-      if args[0] == c[:len(args[0])]:
-        Commands[c](p)
-        commandFound = True
-        break
-    if not commandFound:
-      print "%s doesn't understand the suggestion." % p.name
- 
+        if args[0] == c[:len(args[0])]:
+            Commands[c](p)
+            commandFound = True
+            break
+        if not commandFound:
+        print "%s is confused, enter a command" % p.name
+
