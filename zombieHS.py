@@ -8,14 +8,13 @@ class Character:
     self.health = health
 
     def attack(self, zombie):
-
-    attack = min(max(randint(0, self.health) - randomint(0, zombie.health), 0), zombie.health)
-    zombie.health -= damage
-    if attack == 0:
-        print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
+        attack = min(max(random.randint(0, self.health) - random.randint(0, zombie.health))
+#        zombie.health -= attack
+        if attack == 0:
+            print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
         else:
-        print("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
-        return zombie.health <= 0
+            print("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
+            return zombie.health <= 0
 
 
 class Zombie(Character):
@@ -23,10 +22,10 @@ class Zombie(Character):
 
     Character.__init__(self)
     self.name = "a zombie"
-    self.health = randomint(1, player.health)
+    self.health = random.randint(1, player.health)
 
 
-    # random_adjective = random['wretched', 'filthy', 'disgusting', 'oozing']
+# TODO: random_adjective = random['wretched', 'filthy', 'disgusting', 'oozing']
 
 class Player(Character):
     def __init__(self):
@@ -84,19 +83,19 @@ class Player(Character):
                 self.health -= 1
 
 
-    def ambush(self):
+    def look_around(self):
         if self.state != 'normal':
-            print ("%s is too lazy!") % self.name
+            print ("%s runs into %s") % (self.name, self.zombie.name)
             self.zombie_attacks()
-        ##### clean up past here
         else:
-            print "%s runs into the book stacks in the library" % self.name
-            if randint(0, 1):
+            print "%s runs into the " % self.name
+# TODO: look=random["gymnasium","library","metal shop","cafeteria"]
+            if random.randint(0, 1):
                 self.zombie = Zombie(self)
             print "%s encounters %s!" % (self.name, self.zombie.name)
             self.state = 'fight'
             else:
-                if randint(0, 1):
+                if random.randint(0, 1):
                 self.tired()
 
 
@@ -110,8 +109,8 @@ class Player(Character):
             self.zombie = None
             self.state = 'normal'
         else:
-        print "%s couldn't escape from %s!" % (self.name, self.zombie.name);
-        self.zombie_attacks()
+            print "%s couldn't escape from %s!" % (self.name, self.zombie.name);
+            self.zombie_attacks()
 
 
     def attack(self):
@@ -141,7 +140,7 @@ Commands = {
     'help': Player.help,
     'status': Player.status,
     'rest': Player.rest,
-    'explore': Player.explore,
+    'look around': Player.look_around,
     'flee': Player.flee,
     'attack': Player.attack,
 }
