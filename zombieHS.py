@@ -4,13 +4,16 @@ import random
 class Character:
     def __init__(self):
         self.name = ""
-
-    self.health = health
+        self.health = health
+        self.life = 20
+        self.health = random.choice(0, life)
+        self.zombie_life = 10
+        self.zombie_health = random,choice(0, zombie_life)
 
     def attack(self, zombie):
-        attack = min(max(random.randint(0, self.health) - random.randint(0, zombie.health))
-#        zombie.health -= attack
-        if attack == 0:
+        self.hit = self.health - self.zombie_health
+        zombie.life -= self.hit
+        if self.hit == 0:
             print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
         else:
             print("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
@@ -19,13 +22,11 @@ class Character:
 
 class Zombie(Character):
     def __init__(self, player):
+        Character.__init__(self)
+        ran_adj = random.choice['wretched', 'filthy', 'disgusting', 'oozing']
+        self.name = "a", rand_adj(), " zombie"
+        self.health = random.choice(player.health)
 
-    Character.__init__(self)
-    self.name = "a zombie"
-    self.health = random.randint(1, player.health)
-
-
-# TODO: random_adjective = random['wretched', 'filthy', 'disgusting', 'oozing']
 
 class Player(Character):
     def __init__(self):
@@ -54,13 +55,14 @@ class Player(Character):
 
 
     def rest(self):
+        ran_adj = ['under a desk','in a locker','in a closet']
         if self.state != 'normal':
             print ("keep moving %s, zombies coming in hot!") % self.name
             self.zombie_attack()
 
         else:
-            print "%s hides under a desk and takes a breather." % self.name
-############# ['under a desk','in a locker','in a closet']
+            print "%s hides", ran_adj " and takes a breather." % self.name
+
             if randint(0,1):
                 self.zombie = Zombie(self)
                 print (%s is surprised by %s) %(self.name self.zombie)
@@ -165,3 +167,9 @@ while (p.health > 0):
         if not commandFound:
             print "%s is confused, enter a command" % p.name
 
+"""
+living on the outskirts of a government national lab
+has it's pros and cons.  when the kids in school
+say that a rouge virus has started to infect people
+and turn them into zombies, you laugh it off.
+"""
