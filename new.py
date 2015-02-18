@@ -1,51 +1,95 @@
 import random
 
-class Character():
-    def self.__init__(self, name, life):
-        self.name = name
-        self.life = life
-        self.weapon = weapon
 
-    def takeHit(self.life, hit):
+class Character():
+    def __init__(self, name, life):
+        self.name = "placeholder"
+        self.life = life
+        self.weapon = []
+
+    def takehit(self, hit):
         self.life -= hit
         if self.life <= 0:
-            print(self.name + " is dead)
+            print(self.name + " is dead")
 
-    def makeLife(self.life, snack):
+    def makelife(self, snack):
         self.life += snack
 
+
 class Player(Character):
-    def self.__init__(self):
-        self.name = name
-        self.life = 100
+    def __init__(self):
+        Character.__init__(self, name=" ", life=100)
+        if self.life <= 0:
+            print (self.name + " roams among the undead and craves BRAINS!!")
+
+    def quit(self):
+        print "quit"
+
+    def menu(self):
+        print menu.keys
+
+    def takeweapon(self):
+        pass
+
+    def snack(self):
+        self.life += 10
+        print "eat"
+
+    def attack(self):
+        print "attack"
+
+    def run(self):
+        print 'run'
+
 
 class Zombie(Character):
-    def self.__init__(self):
+    def __init__(self):
+        Character.__init__(self, name, life)
         self.name = "a " + zom_adj + " " + antagonist + " zombie" 
         self.life = 30
+        self.monster = []
 
-    zom_adj = random.choice['wretched', 'filthy', 'disgusting', 'oozing']
-    antagonist = random.choice["football" , "cheerleader" , "emo kid"]
+        self.zom_adj = random.choice['wretched', 'filthy', 'disgusting', 'oozing']
+        self.antagonist = random.choice["football" , "cheerleader" , "emo kid"]
 
+#def main():
+#print "Action Menu:"
+print "-" * 20
 menu = {
     "quit" : Player.quit,
-    "help" : Player.help,
-    "take weapon" : Player.takeWeapon,
+    "menu" : Player.menu,
+    "take weapon" : Player.takeweapon,
     "eat victual" : Player.snack,
     "attack" : Player.attack,
     "flee" : Player.run,
 }
 
-input = Player()
-input.name = raw_input("What is your character name?\n>\n")
+h = Player()
+h.name = raw_input("What is your character name?\n>")
 print """\t\tZOMBIE HIGH SCHOOL!\n"""
-print "type 'help' to get a menu of actions you can take.\n"
+print "type 'menu' to get a menu of actions you can take.\n"
 
-while input.life > 0 :
+while h.life > 0:
     line = raw_input("> ")
-    for x in menu.keys():
-        if x is in menu:
-            menu[x](input)
-        else:
-            print "try again"
+    if 'qu' in line:
+        Player.quit()
+    elif 'men' in line:
+        x = Player()
+        x.menu()
+    elif 'tak' in line:
+        Player.takeweapon()
+    elif 'eat' in line:
+        Player.snack()
+    elif 'at' in line:
+        Player.attack()
+    elif 'fl' in line:
+        Player.run()
+    else:
+        print "Bewildered and confused, try another action"
+    # for x in menu.keys():
+    #     if x in line:
+    #         menu[x](input)
+    #     else:
+    #         print "try again"
 
+#main()
