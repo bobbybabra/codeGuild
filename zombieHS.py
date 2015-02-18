@@ -4,7 +4,6 @@ import random
 class Character:
     def __init__(self):
         self.name = ""
-        self.health = health
         self.life = 20
         self.health = random.choice(0, life)
         self.zombie_life = 10
@@ -16,7 +15,7 @@ class Character:
         if self.hit == 0:
             print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
         else:
-            print("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
+            print ("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
             return zombie.health <= 0
 
 
@@ -55,13 +54,13 @@ class Player(Character):
 
 
     def rest(self):
-        ran_adj = ['under a desk','in a locker','in a closet']
+        ran_adj = random.choice['under a desk','in a locker','in a closet']
         if self.state != 'normal':
-            print ("keep moving %s, zombies coming in hot!") % self.name
-            self.zombie_attack()
+            print ("keep moving %s, zombies coming in hot!") % (self.name, self.zombie_attack)
+
 
         else:
-            print "%s hides", ran_adj " and takes a breather." % self.name
+            print ("%s hides" + ran_adj + " and takes a breather.") % self.name
 
             if randint(0,1):
                 self.zombie = Zombie(self)
@@ -73,8 +72,7 @@ class Player(Character):
     def attack(self):
         if randint(0, 1):
         self.zombie = Zombie(self)
-        print ("Look out %s! -%s appears!") % (self.name)
-        self.zombie_name
+        print ("Look out %s! -%s appears!") % (self.name, self.zombie_name)
         self.state = 'fight'
         self.zombie_attacks()
         else:
@@ -90,8 +88,8 @@ class Player(Character):
             print ("%s runs into %s") % (self.name, self.zombie.name)
             self.zombie_attacks()
         else:
-            print "%s runs into the " % self.name
-# TODO: look=random["gymnasium","library","metal shop","cafeteria"]
+            print ("%s runs into the "+ look) % self.name
+            look=random.choice["gymnasium","library","metal shop","cafeteria"]
             if random.randint(0, 1):
                 self.zombie = Zombie(self)
             print "%s encounters %s!" % (self.name, self.zombie.name)
@@ -103,16 +101,16 @@ class Player(Character):
 
     def flee(self):
         if self.state != 'fight':
-            print "%s runs down a corridor" % self.name;
+            print "%s runs down a corridor" % self.name
             self.tired()
         else:
-            if randint(1, self.health + 5) > randint(1, self.zombie.health):
-            print "%s flees from %s." % (self.name, self.zombie.name)
-            self.zombie = None
-            self.state = 'normal'
-        else:
-            print "%s couldn't escape from %s!" % (self.name, self.zombie.name);
-            self.zombie_attacks()
+            if random.randint(1, self.health + 5) > random.randint(1, self.zombie.health):
+                print "%s flees from %s." % (self.name, self.zombie.name)
+                self.zombie = None
+                self.state = 'normal'
+            else:
+                print "%s couldn't escape from %s!" % (self.name, self.zombie.name);
+                self.zombie_attacks()
 
 
     def attack(self):
@@ -124,7 +122,7 @@ class Player(Character):
                 print ("%s decapitates %s!") % (self.name, self.zombie.name)
                 self.zombie = None
                 self.state = 'normal'
-                if randint(0, self.health) < 10:
+                if random.choice(self.health) < 10:
                     self.health += 1
                     self.health_max += 1
                     print "%s is rejuvenated" % self.name
@@ -133,39 +131,39 @@ class Player(Character):
 
 
     def zombie_attacks(self):
-        if self.zombie.do_damage(self):
-            print ("%s's brains were devoured  by %s!!!\nyou are undead and crave BRAINS!!/nunless you're a veggetarian then seek GRAINS!!"() % (self.name, self.zombie.name)
+        if self.zombie.attack(self):
+            print ("%s's brains were devoured  by %s!!!\nyou are undead and crave BRAINS!!/nunless you're a veggetarian then seek GRAINS!!") % (self.name, self.zombie.name)
 
+def menu():
+    Commands = {
+        'quit': Player.quit,
+        'help': Player.help,
+        'status': Player.status,
+        'rest': Player.rest,
+        'look around': Player.look_around,
+        'flee': Player.flee,
+        'attack': Player.attack,
+    }
 
-Commands = {
-    'quit': Player.quit,
-    'help': Player.help,
-    'status': Player.status,
-    'rest': Player.rest,
-    'look around': Player.look_around,
-    'flee': Player.flee,
-    'attack': Player.attack,
-}
+    hero = Player()
+    hero.name = raw_input("What is your character's name? ")
+    print "(type help to get a list of actions)\n"
+    print """When %s leaves homeroom, they 
+             a strange stench in the air
+	     maybe we are dissecting a frog in biology today...""" % hero.name
 
-p = Player()
-p.name = raw_input("What is your character's name? ")
-print "(type help to get a list of actions)\n"
-print """When %s leaves homeroom, they 
-a strange stench in the air
-	maybe we are disecting a pig in biology today...""" % p.name
-
-while (p.health > 0):
-    line = raw_input("> ")
-    args = line.split()
-    if len(args) > 0:
-        commandFound = False
-    for c in Commands.keys():
-        if args[0] == c[:len(args[0])]:
-            Commands[c](p)
-            commandFound = True
-            break
-        if not commandFound:
-            print "%s is confused, enter a command" % p.name
+    while (p.health > 0):
+        line = raw_input("> ")
+        args = line.split()
+        if len(args) > 0:
+            commandFound = False
+        for c in Commands.keys():
+            if args[0] == c[:len(args[0])]:
+                Commands[c](p)
+                commandFound = True
+                break
+            if not commandFound:
+                print "%s is confused, enter a command" % p.name
 
 """
 living on the outskirts of a government national lab
