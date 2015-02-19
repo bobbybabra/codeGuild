@@ -25,8 +25,7 @@ class Player(Character):
         self.weapon = []
 
     def attack(self):
-# TODO: if weapon then increase hit damage by 10
-        hit = random.choice(range(1, Zombie.life)
+        hit = random.choice(range(1, Zombie.life))
         Zombie.life -= hit
         print "Zombie life is" + Zombie.self.life
 
@@ -54,29 +53,31 @@ def quit():
 def menu():
     print help
 
+
 def be_a_hero():
 # TODO: make counter and once 10 zombies are slayed, you win
     print 'virtuous are the brave!!\n'
-    print 'hark! %s approaches' %s Zombie.name
+    print ('hark! %s approaches') %sZombie().name
     Zombie.attacks()
 
-def takeweapon(self):
+
+def takeweapon():
     print "your friend plays softball! you grab her bat from her locker"
     for w in weapon:
         Player.weapon.append(bat)
 # TODO: allow weapon option only after 3 zombies are fought then remove
 
-def snack(self):
+def snack():
     Player.life += 10
     print "manga manga"
     print "Your life is now" + Player.life
 # TODO: allow snack option only after 5 zombies are fought
 
-def attack(self):
+def attack():
     print "die pond scum!"
     Player.attack()
 
-def run(self):
+def run():
     print 'runaway!'
     Player.life -= 5
     print "Your life is now" + Player.life
