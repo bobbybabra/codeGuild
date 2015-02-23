@@ -11,8 +11,8 @@ class Character():
         if self.life <= 0:
             print(self.name + " is dead")
 
-    def makelife(self, snack):
-        self.life += snack
+    # def makelife(self, snack):
+    #     self.life += snack
 
 
 class Player(Character):
@@ -21,8 +21,12 @@ class Player(Character):
         if self.life <= 0:
             print (self.name + " roams among the undead and craves BRAINS!!")
 
+    def set_kills(self):
+        zombie_kills = 0
+        self.zk = zombie_kills
+
     def weapon(self):
-        self.weapon = []
+        self.weapon = weapon
 
     def attack(self):
         hit = random.choice(range(1, Zombie.life))
@@ -45,76 +49,117 @@ class Zombie(Character):
         Player.life -= hits
         print "Your life is now" + Player.life
 
-
-def quit():
-    print "The zombie virus has infected you, You are now undead and crave BRAINS!!"
-    Player.health = 0
-
-def menu():
-    print help
-
-
-def be_a_hero():
-# TODO: make counter and once 10 zombies are slayed, you win
-    print 'virtuous are the brave!!\n'
-    print ('hark! %s approaches') %sZombie().name
-    Zombie.attacks()
-
-
-def takeweapon():
-    print "your friend plays softball! you grab her bat from her locker"
-    for w in weapon:
-        Player.weapon.append(bat)
-# TODO: allow weapon option only after 3 zombies are fought then remove
-
-def snack():
-    Player.life += 10
-    print "manga manga"
-    print "Your life is now" + Player.life
-# TODO: allow snack option only after 5 zombies are fought
-
-def attack():
-    print "die pond scum!"
-    Player.attack()
-
-def run():
-    print 'runaway!'
-    Player.life -= 5
-    print "Your life is now" + Player.life
-
-
-#def main():
-#print "Action Menu:"
-print "-" * 20
-help = [
-    "quit",
-    "menu",
-    "take weapon",
-    "eat victual",
-    "attack",
-    "flee",
-]
-
+zombie_kills = 0
 h = Player()
-h.name = raw_input("What is your character name?\n>")
-print """\t\tZOMBIE HIGH SCHOOL!\n"""
-print "type 'menu' to get a menu of actions you can take.\n"
 
-while h.life > 0:
-    line = raw_input("> ")
-    if 'qu' in line:
+
+class Action(Player):
+#    act = Player()
+#    act.set_kills()
+
+    def quit(self):
+        print "The zombie virus has infected you, You are now undead and crave BRAINS!!\n"
+        print "Unless you are a vegetarian, then you crave...GRAINS!!\n\n"
+        h.life = 0
         quit()
-    elif 'men' in line:
-        menu()
-    elif 'tak' in line:
-        takeweapon()
-    elif 'eat' in line:
-        snack()
-    elif 'at' in line:
-        attack()
-    elif 'fl' in line:
-        run()
-    else:
-        print "Bewildered and confused... try another action"
 
-#main()
+    def menu(self):
+        if zombie_kills <= 4:
+            print menu_one()
+        elif zombie_kills >= 5:
+            print menu_two()
+        elif zombie_kills >= 10:
+            print menu_three()
+
+    def be_a_hero(self):
+    # TODO: make counter and once 10 zombies are slayed, you win
+        print 'virtuous are the brave!!\n'
+        print ('hark! %s approaches') %sZombie().name
+        Zombie.attacks()
+
+
+    def takeweapon(self):
+        print "your friend plays softball! you grab her bat from her locker"
+        for w in weapon:
+            Player.weapon.append(bat)
+    # TODO: allow weapon option only after 3 zombies are fought then remove
+
+    def snack(self):
+        Player.life += 10
+        print "manga manga"
+        print "Your life is now" + Player.life
+    # TODO: allow snack option only after 5 zombies are fought
+
+    def attack(self):
+        print "die pond scum!"
+        Player.attack()
+
+    def run(self):
+        print 'runaway!'
+        Player.life -= 5
+        print "Your life is now" + Player.life
+
+
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+
+def menu_one():
+    print "Action Menu:"
+    print "-" * 30
+    print("quit")
+    print("menu")
+    print( "look around")
+    print( "attack")
+    print("flee")
+    print "-" * 30
+
+
+def menu_two():
+    print "Action Menu:"
+    print "-" * 30
+    print("quit")
+    print("menu")
+    print( "take weapon")
+    print("eat victual")
+    print( "attack")
+    print("flee")
+    print "-" * 30
+
+
+def start():
+    h = Action()
+    h.name = raw_input("What is your character's name?\n>")
+    print "-" * 60
+    print "-" * 60
+    print """\t\tWelcome %s, to.....\n""" % h.name
+    print """\t\tZOMBIE HIGH SCHOOL!\n"""
+    print "type 'menu' to get a menu of actions you can take.\n"
+
+    while h.life > 0:
+        line = raw_input("> ").lower()
+        if 'qu' in line:
+            h.quit()
+        elif 'men' in line:
+            h.menu()
+        elif 'tak' in line:
+            takeweapon()
+        elif 'eat' in line:
+            snack()
+        elif 'at' in line:
+            attack()
+        elif 'fl' in line:
+            run()
+        elif 'eat' in lines:
+            snack()
+        else:
+            print "Bewildered and confused... try another action"
+start()
+
