@@ -3,7 +3,7 @@ import random
 
 class Character():
     def __init__(self, name, life):
-        self.name = "placeholder"
+        self.name = ""
         self.life = life
 
     def takehit(self, hit):
@@ -95,8 +95,13 @@ class Action(Player):
         Player.attack()
 
     def run(self):
+    # TODO: make menu list, if run < 1 print no exit... etc.
         print 'runaway!'
         Player.life -= 5
+	bad_exit = "you bolt out the door and enter the corridor, the hallway is chaos and you notice the exit is blocked by zombies eating your classmates"
+	if zombie_kills <= 1
+		print bad_exit
+	elif
         print "Your life is now" + Player.life
 
 
@@ -141,6 +146,15 @@ def start():
     print "-" * 60
     print """\t\tWelcome %s, to.....\n""" % h.name
     print """\t\tZOMBIE HIGH SCHOOL!\n"""
+    print """\tThe scene is a distopian future"""
+    print """%s, you are in high school when the twittersphere""" % h.name
+    print """is blowing up about a zombie virus in you town!\n""" 
+    print """you look next to you and the awkward shy kid is pale,""" 
+    print """eyes glazed over, and bloody spittle oozing from his mouth\n\n"""
+    print "\tYour move %s!!!\n" %h.name
+    print "-" * 60
+    print "-" * 60
+
     print "type 'menu' to get a menu of actions you can take.\n"
 
     while h.life > 0:
@@ -150,15 +164,15 @@ def start():
         elif 'men' in line:
             h.menu()
         elif 'tak' in line:
-            takeweapon()
+            h.takeweapon()
         elif 'eat' in line:
-            snack()
+            h.snack()
         elif 'at' in line:
-            attack()
+            h.attack()
         elif 'fl' in line:
-            run()
+            h.run()
         elif 'eat' in lines:
-            snack()
+            h.snack()
         else:
             print "Bewildered and confused... try another action"
 start()
