@@ -1,5 +1,6 @@
 import random
-
+from subprocess import call
+import time
 
 class Character():
     def __init__(self, name, life):
@@ -98,10 +99,10 @@ class Action(Player):
     # TODO: make menu list, if run < 1 print no exit... etc.
         print 'runaway!'
         Player.life -= 5
-	bad_exit = "you bolt out the door and enter the corridor, the hallway is chaos and you notice the exit is blocked by zombies eating your classmates"
-	if zombie_kills <= 1
-		print bad_exit
-	elif
+        bad_exit = ("you bolt out the door and enter the corridor, the hallway is PURE CHAOS, and you notice the exit is blocked by zombies eating your classmates")
+        if h.zombie_kills <= 1:
+        print bad_exit
+        elif:
         print "Your life is now" + Player.life
 
 
@@ -115,6 +116,13 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+def timedots():
+    dots = "..."
+    for i in range(0,10):
+        dots += "..."
+        call(['clear'])
+        print (dots)
+        time.sleep(0.3)
 
 def menu_one():
     print "Action Menu:"
@@ -142,6 +150,7 @@ def menu_two():
 def start():
     h = Action()
     h.name = raw_input("What is your character's name?\n>")
+    call(['clear'])
     print "-" * 60
     print "-" * 60
     print """\t\tWelcome %s, to.....\n""" % h.name
@@ -151,12 +160,13 @@ def start():
     print """is blowing up about a zombie virus in you town!\n""" 
     print """you look next to you and the awkward shy kid is pale,""" 
     print """eyes glazed over, and bloody spittle oozing from his mouth\n\n"""
+#    timedots()
     print "\tYour move %s!!!\n" %h.name
     print "-" * 60
     print "-" * 60
 
-    print "type 'menu' to get a menu of actions you can take.\n"
-
+    print "type 'menu' to get a list of actions you can take.\n"
+# TODO: use a timer or timestamp to give urgency and 'skate, or die'
     while h.life > 0:
         line = raw_input("> ").lower()
         if 'qu' in line:

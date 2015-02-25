@@ -7,15 +7,15 @@ class Character:
         self.life = 20
         self.health = random.choice(0, life)
         self.zombie_life = 10
-        self.zombie_health = random,choice(0, zombie_life)
+        self.zombie_health = random.choice(0, zombie_life)
 
     def attack(self, zombie):
         self.hit = self.health - self.zombie_health
         zombie.life -= self.hit
         if self.hit == 0:
-            print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name)
+            print ("..like a nimble sloth, %s evades %s's attack." % (zombie.name, self.name))
         else:
-            print ("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name)
+            print ("%s inflicts debilitating damage on %s!!" % (self.name, zombie.name))
             return zombie.health <= 0
 
 
@@ -45,7 +45,7 @@ class Player(Character):
 
 
     def status(self):
-        print ("%s's health: %d/%d" % (self.name, self.health, self.health_max)
+        print ("%s's health: %d/%d" % (self.name, self.health, self.health_max))
 
 
     def weak(self):
