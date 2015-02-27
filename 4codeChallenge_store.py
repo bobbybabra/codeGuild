@@ -20,24 +20,54 @@ class Wholesale():
 
 class Store(object):
     def __init__(self, item):
-        self.avail_items = []
-        self.customer_basket = []
+        self.avail_items = {}
+        self.customer_basket = {}
+
+    def find(self,text):
+        found_list = []
+        for index, item in self.available_items.items():
+            name = item.name
+            position = name.find(text)
+            if position <> -1:
+                found_list.append(item)
+        return found_list
+# dict to list, pop, then add 11?
         # self.item = widgets
         # self.colors = colors
         # self.size_price = dict(zip('small, medium, large', [10, 20, 30]))
 
 
-class InventoryItems():
+class InventoryItem():
     def __init__(self, name, on_hand, price):
         self.name = name
         self.on_hand = on_hand
         self.price = price
-
+	self.sizes = None
+	self.colors = None
+	
     def __repr__(self):
         output = ""
         output = output + self.name
         output = output + " @ " + str(self.price)
         return output
+
+sizes = ["small","medium","large"]
+colors = ["black","white"]
+
+class InventoryItemFactory():
+    def make_item(self, name, sizes, colors):
+        widget = InventoryItem()
+        widget.name = name
+        widget.sizes = sizes
+        widget.colors = colors
+	return widget
+
+factory = InventoryItemFactory()
+small_black = factory.make_item("widget","small","black")
+print small_black
+
+for type.color in list(types, sizes, colors):
+    print(types, sizes, colors
 
     # def ls_inventory(self):
     #     print len(inventory)
@@ -72,6 +102,14 @@ class Custormer():
     def __init__(self, name):
         self.name = name
         self.cart = Cart()
+
+    def search(self, input_name):
+        if input_name in self.name:
+            print 'ok'
+        elif:
+            print 'welcome new customer %s' %input_name
+            self.customer_list.append {(customer_list:-1) + 11 : 'input_name'}
+
 
 # class MakeOrder(Wholesale, Store):
 #     def placeOrder(self):

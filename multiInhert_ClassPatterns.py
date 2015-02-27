@@ -45,10 +45,35 @@ class AnimalFactory(object):
 # >>> factory = animalFactory()
 # >>> bear = factory.make_animal('bear','brown','fish','hunter')
 
+# loops through factory to make instances
+
 for type.color, food in list(types, colors, food):
 	print(types, colors, food)
 
-# loops through factory to make instances
+##############################################################################
+#                Kevin's example:					     #
+##############################################################################
+class Shirt():
+	def__init__(self, color, size):
+		self.color = color
+		self.size = size
+	def __repr__(self):
+		return "{color:'"+ self.color + "',size: '" + self.size
+
+class ShirtFactory():
+	sizes =("s","m","l","xl")
+	colors =("red","green","blue")
+	def makeAllCombos(self):
+		shirt_list = []
+		for c in self.colors:
+			for s in self.sizes:
+				shirt_list.append(Shirt(c,s))
+		return shirt_list
+
+my_factory = ShirtFactory()
+my_shirts = my_factory.makeAllCombos()
+print len(my_shirts), my_shirts
+
 
 #-------------------------------------------------------------
 
