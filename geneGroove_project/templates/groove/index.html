@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+{% load staticfiles %} <!-- New line -->
+
+<html>
+
+    <head>
+        <title>Groove</title>
+    </head>
+
+    <body>
+        <h1>Gene Groove!</h1>
+        Sonify Genetic Code! <strong>{{ boldmessage }}</strong><br />
+        {% if categories %}
+            <ul>
+                {% for category in categories %}
+                <li><a href="/groove/category/{{ category.slug }}">{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
+        <a href="/groove/about/">About</a><br />
+        <img src="{% static "images/echo.jpg" %}" alt="Picture of Echo" /> <!-- New line -->
+    </body>
+
+</html>
