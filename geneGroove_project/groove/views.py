@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from groove.models import Category, Page
 #from django.http import HttpResponse
-from groove.forms import CategoryForm
+from groove.forms import CategoryForm, PageForm
+
 
 def add_category(request):
     # A HTTP POST?
@@ -30,8 +31,18 @@ def add_category(request):
 
 def category(request, category_name_slug):
 
-    # Create a context dictionary which we can pass to the template rendering engine.
-    context_dict = {}
+    # Request our context
+    context = RequestContext(request)
+
+    # Change underscores in the category name to spaces.
+    # URL's don't handle spaces well, so we encode them as underscores.
+    category_name = decode_url(category_name_url)
+
+    # Build up the dictionary we will use as out template context dictionary.
+    context_dict = {'category_name': category_name, 'category_name_url': category_name_url}
+
+    cat_list = get_category_list()
+    context_dict['cat_list'] = cat_list
 
     try:
         # Can we find a category name slug with the given name?
@@ -94,3 +105,29 @@ def about(request):
     # Return and render the response, ensuring the count is passed to the template engine.
     return render_to_response('rango/about.html', context_dict , context)
 
+
+def add_page(request, category_name_slug):
+
+    try:
+        cat = Category.objects.get(slug=category_name_slug)
+    except Category.DoesNotExist:
+                cat = None
+
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+        if form.is_valid():
+            if cat:
+                page = form.save(commit=False)
+                page.category = cat
+                page.views = 0
+                page.save()
+                # probably better to use a redirect here.
+                return category(request, category_name_slug)
+        else:
+            print form.errors
+    else:
+        form = PageForm()
+
+    context_dict = {'form':form, 'category': cat}
+
+    return render(request, 'groove/add_page.html', context_dict)
